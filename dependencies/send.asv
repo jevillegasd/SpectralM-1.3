@@ -8,18 +8,15 @@ function ret = send(g,cmd)
     elseif isa(g,'gpib')
         %Note that tcp/ip function in client mode will be removed from
         %matlab, hence it is recommended to use tcpclient instead.
-        close = 0;
-        if (strcmp(g.status,'closed'))
-            close = 1;
-            fopen(g);
+        if (strcmp(g.status
+            
         end
-        
+        fopen(g);
         fprintf(g,cmd); 
         if cmdc(end) == '?', ret = fscanf(g);
         else, ret = '';
         end
-        
-        if close, fclose(g); end
+        fclose(g);
     end
     
 end
