@@ -21,7 +21,7 @@ function ret = send(g,cmd)
         
         if close, fclose(g); end
     elseif isa(g,'sm_instrument')
-         send(g.connection,cmd)
+         ret = send(g.connection,cmd);
     end
     
 end
